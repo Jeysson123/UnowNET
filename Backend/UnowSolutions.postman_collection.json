@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "9d4bc06b-39a9-44b6-beac-88fb6a884165",
+		"name": "UnowSolutions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27322269"
+	},
+	"item": [
+		{
+			"name": "NET",
+			"item": [
+				{
+					"name": "Auth",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseBody = pm.response.json();\r",
+									"\r",
+									"let token = responseBody.body;\r",
+									"\r",
+									"pm.environment.set(\"token\", token);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":{{username}},\r\n    \"password\":{{password}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth?{{api-version}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth"
+							],
+							"query": [
+								{
+									"key": "{{api-version}}",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/task?{{api-version}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "{{api-version}}",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/task/2?{{api-version}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task",
+								"2"
+							],
+							"query": [
+								{
+									"key": "{{api-version}}",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Description\":\"Postman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/task?{{api-version}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "{{api-version}}",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": 2,\r\n    \"Description\":\"Azure and Post\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/task?{{api-version}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "{{api-version}}",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/task/5?{{api-version}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"task",
+								"5"
+							],
+							"query": [
+								{
+									"key": "{{api-version}}",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SPRING BOT",
+			"item": [
+				{
+					"name": "Vehicle list",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/unowsoltions/vehicles/get"
+					},
+					"response": []
+				},
+				{
+					"name": "Vehiclde find",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/unowsoltions/vehicles/find?id=8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"unowsoltions",
+								"vehicles",
+								"find"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vehicle add",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"brand\":\"test\",\r\n    \"model\":\"test\",\r\n    \"licensePlate\":\"7777 AAA\",\r\n    \"color\":\"Verde\",\r\n    \"year\":\"2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/unowsoltions/vehicles/insert"
+					},
+					"response": []
+				},
+				{
+					"name": "Vehicle update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"brand\":\"bmw\",\r\n    \"model\":\"Ford Explorer\",\r\n    \"licensePlate\":\"7777 AAA\",\r\n    \"color\":\"Rosado\",\r\n    \"year\":\"2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/unowsoltions/vehicles/update/14"
+					},
+					"response": []
+				},
+				{
+					"name": "Vechile delete",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/unowsoltions/vehicles/remove/7"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
